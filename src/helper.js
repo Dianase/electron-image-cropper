@@ -1,4 +1,3 @@
-const fs = require('fs')
 
 const createImage  = (url) => {
   return new Promise((resolve, reject) => {
@@ -28,5 +27,5 @@ export default async function saveCroppedImage(filename, imageSrc, croppedAreaPi
   const url = canvas.toDataURL('image/jpg', 0.8)
   const base64data = url.replace(/^data:image\/png;base64,/, '')
   const newFileName = `${filename}-cropped.png`
-  fs.writeFile(newFileName, base64data, 'base64', (err)=> console.error(err))
+  fs.writeFileSync(newFileName, base64data, 'base64', (err)=> console.error(err))
 }
